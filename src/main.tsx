@@ -6,10 +6,7 @@ import { MSAL_CONFIG } from './authConfig'
 import App from './App'
 import './index.css'
 
-const msalInstance = new PublicClientApplication(MSAL_CONFIG)
-
-// Handle redirect promise on startup
-msalInstance.initialize().then(() => {
+PublicClientApplication.createPublicClientApplication(MSAL_CONFIG).then((msalInstance) => {
   // Set active account on login success
   msalInstance.addEventCallback((event) => {
     if (
